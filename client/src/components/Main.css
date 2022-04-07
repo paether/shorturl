@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;500;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Proza Libre", sans-serif;
+  height: 100vh;
+  background: url("../assets/bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 32rem;
+  height: 20rem;
+  perspective: 1500px;
+}
+.card .content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+}
+.front {
+  background-color: #e29e21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid #d54005;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+.back {
+  transform: rotateY(180deg);
+  background-color: #d54005;
+  border: 10px solid #e29e21;
+
+  align-items: center;
+  justify-content: center;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.more {
+  display: none;
+}
+.content.generated {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.front .inner,
+.back .inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5em;
+  transform: translateZ(80px);
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.link-input {
+  width: 350px;
+  background: #001220;
+  color: white;
+  font-family: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  font-size: 1rem;
+  padding: 10px;
+}
+button {
+  font-size: 1.2rem;
+  padding: 10px;
+
+  transition: all 235ms ease;
+  border: solid #d54005;
+  border-width: 4px;
+
+  cursor: pointer;
+  color: white;
+  background-color: #d54005;
+  text-align: center;
+  backface-visibility: hidden;
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+}
+button.spin {
+  animation: spinner 1.5s linear infinite;
+}
+
+button.return {
+  background-color: #e29e21;
+  border: solid #e29e21;
+}
+button:hover {
+  box-shadow: black 2px 8px 8px -5px;
+  transform: scale(1.1);
+}
+button:focus,
+button.return:focus {
+  box-shadow: black 2px 8px 4px -6px;
+}
+
+button.return:hover {
+  box-shadow: black 2px 8px 8px -5px;
+  transform: scale(1.1);
+}
+.result-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  font-size: 1.2rem;
+}
+.result-url {
+  background-color: #001220;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.7rem;
+  overflow-x: scroll;
+  max-width: 300px;
+  color: white;
+}
+.result-copy {
+  user-select: none;
+  position: relative;
+  cursor: pointer;
+  margin-left: auto;
+  background-color: white;
+  color: black;
+  padding: 10px;
+}
+.result-copy:hover {
+  background-color: #e29e21;
+}
+.result-copy.copied span {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.result-copy span {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  opacity: 0;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #001220;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  transform: translate(-50%, 1rem);
+  transition: all 0.15s ease-in-out;
+}
+.result-copy span::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 0.5em solid transparent;
+  border-top-color: #001220;
+  transform: translate(-50%, 0);
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    width: 280px;
+    height: 280px;
+  }
+  .inner h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .link-input {
+    width: 200px;
+  }
+  .result-url {
+    max-width: 100px;
+  }
+}
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

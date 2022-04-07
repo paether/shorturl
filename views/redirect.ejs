@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:8800"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html,
+      body {
+        font-family: sans-serif;
+        min-height: 100%;
+      }
+      body {
+        padding: 40px;
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        color: white;
+        font-size: 2rem;
+        flex-direction: column;
+        background-color: #001220;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .spinner {
+        aspect-ratio: 1/1;
+        min-width: 100px;
+        min-height: 100px;
+        border: 1.5rem solid #e29e21;
+        border-bottom-color: #d54005;
+        border-radius: 50%;
+        animation: rotate 1s linear infinite;
+      }
+      @keyframes rotate {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (max-width: 500px) {
+        body {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+    <title>Redirecting...</title>
+  </head>
+  <body onload="redirect()">
+    <h2>You are being redirected</h2>
+    <div class="spinner"></div>
+    <script>
+      function redirect() {
+        setTimeout(function () {
+          window.location.href = "<%= url %>";
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
