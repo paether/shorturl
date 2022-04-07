@@ -27,14 +27,13 @@ export default function Main() {
     try {
       generateBtn.current.classList.add("spin");
       const response = await axios.post(
-        "https://paether-url-shortener.herokuapp.com/api/create/",
+        "https://p-urls.herokuapp.com/api/create/",
         {
           url: input.current.value,
         }
       );
       setGeneratedURL(
-        "https://paether-url-shortener.herokuapp.com/" +
-          response.data.shortedCode
+        "https://p-urls.herokuapp.com/" + response.data.shortedCode
       );
       generateBtn.current.classList.remove("spin");
       contentDiv.current.classList.add("generated");
