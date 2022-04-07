@@ -26,10 +26,16 @@ export default function Main() {
     }
     try {
       generateBtn.current.classList.add("spin");
-      const response = await axios.post("http://localhost:8800/api/create/", {
-        url: input.current.value,
-      });
-      setGeneratedURL("http://localhost:8800/" + response.data.shortedCode);
+      const response = await axios.post(
+        "https://paether-url-shortener.herokuapp.com/api/create/",
+        {
+          url: input.current.value,
+        }
+      );
+      setGeneratedURL(
+        "https://paether-url-shortener.herokuapp.com/" +
+          response.data.shortedCode
+      );
       generateBtn.current.classList.remove("spin");
       contentDiv.current.classList.add("generated");
     } catch (error) {
