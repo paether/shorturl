@@ -1,5 +1,4 @@
 <h1>URL Shortener & QR Code generator </h1>
-<hr>
 
 Technologies used:
 
