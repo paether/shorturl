@@ -1,0 +1,21 @@
+.footer-container {
+  position: fixed;
+  display: flex;
+  padding: 5px;
+  margin-bottom: 10px;
+  bottom: 0;
+  font-size: 1rem;
+  background-color: #e29e21;
+  color: black;
+  gap: 20px;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+.footer-container > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.github-logo {
+  width: 1.4rem;
+  height: 1.4rem;
+}
